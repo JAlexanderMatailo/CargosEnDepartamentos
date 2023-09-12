@@ -42,6 +42,23 @@ namespace CargosEnDepartamentos.Service
             }
             return registrado;
         }
+
+        public List<DepartamentosVM> GetAllDepartamentos()
+        {
+            List<DepartamentosVM> listdepartamentosVMs = new List<DepartamentosVM>();
+            var departamentos = _context.Departamentos.ToList();
+            foreach(var item in listdepartamentosVMs) {
+                DepartamentosVM departament = new DepartamentosVM
+                {
+                    IdDepartamento = item.IdDepartamento,
+                    NombreDepartamento = item.NombreDepartamento,
+                    Estado = item.Estado,
+                };
+                listdepartamentosVMs.Add(departament);
+            };
+            return listdepartamentosVMs;
+        }
+
         #endregion
     }
 }

@@ -14,12 +14,20 @@ namespace CargosEnDepartamentos.Controllers
             _cargoDepService = cargoDepService;
         }
 
-        [HttpPost("")]
+        [HttpPost("RegistrarDepartamento")]
         public IActionResult RegistrarDepartamento(DepartamentosVM departamentosVM)
         {
             var result = _cargoDepService.registrarDepartamentos(departamentosVM);
             return new JsonResult(result);
         }
+
+        [HttpGet("VerDepartamentos")]
+        public IActionResult VerDepatamentos()
+        {
+            var result = _cargoDepService.GetAllDepartamentos();
+            return new JsonResult(result);
+        }
+
 
     }
 }
