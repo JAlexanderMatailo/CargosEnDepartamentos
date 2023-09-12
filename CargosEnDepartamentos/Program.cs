@@ -1,8 +1,12 @@
+using CargosEnDepartamentos.Models;
+using CargosEnDepartamentos.Service;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddScoped<IPersona, PersonaService>();
+builder.Services.AddScoped<ICargoDep, CargosDep>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -12,11 +16,11 @@ builder.Services.AddSwaggerGen();
 
 #region Conexion Base de Datos
 
-//builder.Services.AddDbContext<SaaccazhapugroContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetSection("AppSettings").GetSection("DefaultConnection").Value);
+builder.Services.AddDbContext<CargosEnDepartamentosContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetSection("AppSettings").GetSection("DefaultConnection").Value);
 
-//});
+});
 
 var appSettingsSection = builder.Configuration.GetSection("AppSettings");
 
